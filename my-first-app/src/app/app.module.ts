@@ -16,3 +16,6 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/*All my components are listed in the bootstrap*/
+/*These are then imported to the main.ts*/
