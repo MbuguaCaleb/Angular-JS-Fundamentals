@@ -10,7 +10,7 @@ what needs to be changed.
 
 ```
 
-**Understanding Angulat Vesioning**
+**Understanding Angular Vesioning**
 
 ```
 (a)Angular 1(Angular JS)
@@ -258,6 +258,26 @@ via the adding the styles property in the component.
   `]
 })
 
+```
+
+**component selector**
+
+```
+A component may be selected/rendered  by three methods:
+
+N/B
+Remember we render our components in the main app.component itself.
+
+(a)Component/element itself.
+eg <app-servers>
+
+(b)By attribute.
+
+(c)By class.
+
+Works similarly to css selectors.
+
+Selecting as a component is what is more popularly used.
 ```
 
 **Notes By**
