@@ -5,11 +5,29 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.css']
 })
+
 export class ServersComponent implements OnInit {
 
-  constructor() { }
+  allowNewServer=false;
+  serverName="Test Server";
+  serverCreationStatus ='No Server was Created';
+  /**Construtor runs when my component has been mounted */
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServer=true;
+    },2000)
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  }
+
+  /*Event Listener Method for creating a server*/
+  /*It is good practice to begin naming event listeners with on*/
+  onCreateServer(){
+    this.serverCreationStatus ='Server was Created! Name is' + this.serverName;
   }
 
+  onUpdateServerName(event:Event){
+    /*i must tell  typeScript the type of HTML Element which is my target*/
+    this.serverName=(<HTMLInputElement>event.target).value;
+  }
 }
