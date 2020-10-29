@@ -1,0 +1,15 @@
+
+
+<label>UserName</label>
+
+<input
+type="text"
+class="form-control"
+[(ngModel)] ="userName"
+(input)="onCheckWhetherEmpty($event)"
+>
+
+<p>{{userName}}</p>
+
+
+<button class="btn btn-primary" [disabled] ="userName === ''" (click) ="onClearInputData()">Reset User</button>
