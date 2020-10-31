@@ -280,9 +280,233 @@ Works similarly to css selectors.
 Selecting as a component is what is more popularly used.
 ```
 
+**DataBinding**
+
+```
+(a)Process of loading dynamic data into your angular application.
+
+Passing data from typescript to your HTML so that users can be able to see.
+
+It is the communication between your business logic(typescript) and your angular templates.
+
+There are two ways of communication
+
+(a)String Interpolation.
+
+(b)Property binding.
+
+
+(c)Event binding is the opposite of data binding.Its deals with how you may be able to trigger actions
+and events from your angular templates to typescript itself.
+
+(d)We can also have Two-Way Binding in Angular.This is a combination of both.Where we are able to react events
+and output at the same time.
+
+Example (ngModel)
+
+
+```
+
+**(a)String Interpolation**
+
+```
+(a)Whatever is in the curly braces must somehow return a String.
+
+(b)We cannot write conditions and if statements but we however have an exception that
+we may write a ternary operator.
+
+(c)You may also call methods inside the string interpolation as long as they return Strings.
+
+N/B
+In String Interpolation you may use numbers as well since they may easily be converted into a
+String.
+
+<!-- <p>{{allowNewServer}}</p> -->
+
+```
+
+**(b)Property Binding**
+
+```
+(a)Property binding helps us bind to native html elements properties and make them change
+dynamically via our typescript.
+
+Propery binding refers to the binding of the HTML attributes in our dom [attribute] then
+manilating them with typescript
+
+It is denoted by a square bracket.
+Type script returns the property that the attribute expects.
+
+[disabled] ="!allowNewServer"
+<p [innerText]="allowNewServer"></p>
+
+In instances where we want to manipulate the attribute of a HTML element we use property binding.
+When we want to output data in a template we use String Interpolation.
+
+
+Bracket[] shows that this is a attribute that can be able to be manipulated via angular.
+thus i can use typeScript code.
+```
+
+**(c)Event Binding**
+
+```
+Entails firing of events from my templates using event listeners .
+
+The event listener calls a method that is in your typescript code.
+
+All the HTML events are available in Angular ..The only modification is that you remove on
+from the events.
+
+$event is a special key word that helps me get data from my event listener.
+
+<input
+type="text"
+class="form-control"
+(input)="onUpdateServerName($event)"
+>
+
+When calling an event listener and i want to get the attributes of my target
+I must tell typeScript the type of my target
+
+onUpdateServerName(event:Event){
+    this.serverName=(<HTMLInputElement>event.target).value;
+  }
+
+**(d)Two way data binding**
+
+```
+
+Combines property and event binding.
+Hence denoted by [(NgModel)]
+
+It uses what we call directives.
+
+This is a very powerful feature since data can be updated in both ways.
+We can reat to events in both directions
+
+N/B
+
+One equals sign assigns a value.
+Three equals sign assings something.
+
+Simple ternary operators but not loops may be executed from within our code.
+
+```
+
+**Directives**
+
+```
+
+Strutural directives are denoted by (\*).Structural directives change the DOM .
+Directives are a form of giving instructions to the DOM.
+
+Components are kind of such istructions given to the to the dom.
+
+When i say
+<app-server></app-server>
+
+Angular is going to render this app-server component in the DOM.
+
+Components are a form of directives with a template.
+
+There are also directives without a template
+
+<p appTurnGreen>Receives a green background!</p>
+
+@Directive({
+selector:'[app-turn-green]'
+})
+
+export class TurnGreenDirective{
+
+}
+
+<p *ngIf="serverCreated">Server was created, server name is  {{serverName}}</p>
+
+The \*ngif directive aboce which is a structural directive will either append or remove
+p to the DOM based on the TRUE or FALSE Value.
+
+(b)Introducing NgElse
+
+<p *ngIf="serverCreated; else noServer">Server was created, server name is  {{serverName}}</p>
+
+<ng-template #noServer>
+
+<p>No Server was Created!</p>
+</ng-template>
+
+<ng-temmplate> is a directive used to mark places in oor DOM.
+
+(ii) ATTROBUTE DIRECTIVES.
+
+(a)NgStyle
+
+NgStyle is put very similarly to how we do property binding
+since it affects the attributes of the given element.
+
+Property binding is applied in ngStyle since i am affecting a property.
+
+Using ngStyle i output my Styles directly as shown below
+which is slightly different from ngClass.
+
+<p  [ngStyle]="{backgroundColor: getColor()}">TEXT</p>
+
+N/B
+Constructor is called on creation of the Element.
+
+(b)NgClass
+
+Helps to dynamically add or remove css classes.
+
+Used when i have defined my Styles in a style file and i would wish to
+use and apply those styles.
+
+Here Propery binding is applied since i am affecting a property.
+
+NgClass executes when a condition returns to true.
+
+[ngClass] ="{white-text:logItem > 5 }"
+
+whitetext above which is defined in a css file will only
+be applied when a logitem is greater than 5.(When the condition
+returns to true)
+
+[ngClass] ="{}"
+
+```
+
+(c)ngFor
+
+donoted by (*) since it is a structural component.
+
+servers =['TestServer','Test Server 2'];
+
+<app-server *ngFor="let server of servers"></app-server>
+
+When i am inside an array i can be able to find the value  of the current interation
+via the index.
+
+<div>
+*ngFor="let logItem of log; let i = index"
+</div>
+
+Lets say when i am just pushing objects into an array eg dates.I may be able to get
+the index of each item in my array.
+
+N/B
+Remember that while using index we always begin at index zero.
+
+```
+
 **Notes By**
 
 ```
+
 Mbugua Caleb
+
+```
+
+```
 
 ```

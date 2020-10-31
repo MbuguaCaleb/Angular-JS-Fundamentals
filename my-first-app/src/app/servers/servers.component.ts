@@ -11,6 +11,8 @@ export class ServersComponent implements OnInit {
   allowNewServer=false;
   serverName="Test Server";
   serverCreationStatus ='No Server was Created';
+  serverCreated = false;
+  servers =['TestServer','Test Server 2'];
   /**Construtor runs when my component has been mounted */
   constructor() {
     setTimeout(() => {
@@ -23,6 +25,8 @@ export class ServersComponent implements OnInit {
   /*Event Listener Method for creating a server*/
   /*It is good practice to begin naming event listeners with on*/
   onCreateServer(){
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus ='Server was Created! Name is' + this.serverName;
   }
 
